@@ -24,7 +24,7 @@
     
         public static boolean isFastClick(String context) {
             long curClickTime = System.currentTimeMillis();
-            if (!context.equals(contextName)) { //不同activity不共用计时
+            if (!context.equals(contextName)) { //不同context不共用计时
                 contextName = context;
                 lastClickTime = curClickTime;
                 return false;
