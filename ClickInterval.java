@@ -1,4 +1,3 @@
-package com.item.video.utils;
 import android.app.Activity;
 
 /**
@@ -19,7 +18,7 @@ public class ClickInterval {
         if (type != null)
             name = name + type;
         long curClickTime = System.currentTimeMillis();
-        if (!context.equals(contextName)) { //不同activity不共用计时
+        if (!name.equals(contextName)) { //不同activity不共用计时
             contextName = name;
             lastClickTime = curClickTime;
             return false;
