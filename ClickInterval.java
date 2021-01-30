@@ -1,4 +1,5 @@
 package com.item.video.utils;
+import android.app.Activity;
 
 /**
  * 点击间隔
@@ -9,10 +10,17 @@ public class ClickInterval {
     private static long lastClickTime;
     private static String contextName;
 
-    public static boolean isFastClick(String context) {
+    public static boolean isFastClick(Activity context) {
+        return isFastClick(context, null);
+    }
+
+    public static boolean isFastClick(Activity context, String type) {
+        String name = context.getLocalClassName();
+        if (type != null)
+            name = name + type;
         long curClickTime = System.currentTimeMillis();
-        if (!context.equals(contextName)) { //不同context不共用计时
-            contextName = context;
+        if (!context.equals(contextName)) { //不同activity不共用计时
+            contextName = name;
             lastClickTime = curClickTime;
             return false;
         }
